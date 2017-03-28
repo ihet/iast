@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .tile{width:40px;height:40px;text-align: center;line-height: 40px;border: 1px solid #dedede;box-sizing: border-box;float:left;}
+        .tile.disable{background: #efefef;}
+        .tile.red {background: red; color: #fff;}
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="astar.js"></script>
+<script src="mapBase.js"></script>
+<script>
+    var wrapper = document.getElementById('map');
+    var data = [
+        0,1,0,0,0,
+        0,1,0,1,0,
+        0,0,1,0,0,
+        0,0,0,1,0,
+        0,0,0,0,0
+    ];
+    var map = new MapBase({tileWidth:5,tileHeight:5,wrapper:wrapper},data);
+    var astar = new Astar({x:1,y:3},{x:3,y:2},map);
+    var path = astar.compute();
+    map.drawPath(path);
+</script>
+</body>
+</html>
