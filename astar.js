@@ -61,7 +61,7 @@ var Astar = function(start,target,mapData){
     this.tileHeight = mapData.tileHeight;
     this.open = [];
     this.close = [];
-    this.initMap(mapData);
+    this.initMap(mapData) ;
     this.init();
 };
 Astar.prototype = {
