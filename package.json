@@ -1,0 +1,11 @@
+{
+  "name": "iast",
+  "version": "1.0.0",
+  "description": "An Astar Demo",
+  "main": "astar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
