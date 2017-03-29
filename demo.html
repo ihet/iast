@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="gl-matrix-min.js"></script>
     <style>
-        .tile{width:40px;height:40px;text-align: center;line-height: 40px;border: 1px solid #dedede;box-sizing: border-box;float:left;}
-        .tile.disable{background: #efefef;}
-        .tile.red {background: red; color: #fff;}
+        #map{position: relative;}
+        .tile{
+            width:64px;height:32px;text-align: center;line-height: 32px;
+            background: url('imgs/01.png') no-repeat;
+            position: absolute;
+        }
+        .tile.disable{background: url('imgs/02.png') no-repeat;}
+        .tile.red {background: url('imgs/04.png') no-repeat;}
     </style>
 </head>
 <body>

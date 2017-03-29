@@ -6,6 +6,10 @@ var MapBase = function(opts,data){
     this.tileWidth = null;
     this.tileHeight = null;
     this.wrapper = null;
+    this.tw = 64;
+    this.th = 32;
+    this.mapWidth = 320;
+    this.mapHeight = 160;
     this.init(opts,data);
 };
 MapBase.prototype = {
@@ -26,20 +30,23 @@ MapBase.prototype = {
         this.tileWidth = opts.tileWidth;
         this.tileHeight = opts.tileHeight;
         this.wrapper = opts.wrapper || document.body;
-        this.wrapper.style.width = this.tileWidth * 40+'px';
+        this.wrapper.style.width = this.tileWidth * this.tw+'px';
+        this.wrapper.style.height = this.tileWidth * this.tw*0.5+'px';
         this.data = this.convertData(data);
         this.draw(this.data);
         
     },
     draw:function(data){
         var str = "";
+        var origin = [this.mapWidth*0.5+0.5*this.tw,0];
         for(var y=0;y<data.length;y++){
             for(var x=0;x<data[y].length;x++){
                 var classNames = data[y][x]?'tile disable':'tile';
-                str += '<div class="'+classNames+'" data-Type ="'+data[y][x]+'">('+x+','+y+')</div>';
+                var top = x*this.th*0.5+y*this.th*0.5;
+                var left = (x*0.5-0.5)*this.tw-0.5*(y+1)*this.tw+origin[0];
+                str += '<div style="left:'+left+'px;top:'+top+'px;" class="'+classNames+'" data-Type ="'+data[y][x]+'">('+x+','+y+')</div>';
             }
         }
-        console.dir(str);
         this.wrapper.innerHTML = str;
     },
     clearPath:function(){
